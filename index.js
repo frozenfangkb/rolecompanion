@@ -12,7 +12,8 @@ function createWindow () {
         height: 600,
         webPreferences: {
             nodeIntegration: true
-        }
+        },
+        frame: false
     });
 
     win.loadFile('index.html').then(r => console.log("Correctly loaded index page."));
@@ -22,6 +23,8 @@ function createWindow () {
     });
 
     //win.removeMenu();
+
+    win.webContents.openDevTools();
 
 }
 

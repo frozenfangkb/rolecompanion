@@ -2,9 +2,33 @@
   font-family: Bebas-Neue;
   src: url("../fonts/BebasNeue-Regular.woff");
 }
+
 body {
   background-color: #F5F6F8;
   overflow: hidden;
+  margin: 0px;
+  padding: 0px;
+}
+
+#title-bar {
+  -webkit-app-region: drag;
+  height: 24px;
+  color: #F5F6F8;
+  background-color: #313443;
+  padding: 15px;
+}
+
+#title {
+  position: fixed;
+  top: 5px;
+  left: 10px;
+}
+
+#title-bar-btns {
+  -webkit-app-region: no-drag;
+  position: fixed;
+  top: 0px;
+  right: 6px;
 }
 
 #cuerpo {
@@ -15,18 +39,20 @@ body {
   padding: 25px;
   margin-left: 12%;
 }
+
 #cuerpo #cabecera {
   font-size: 36px;
 }
+
 #cuerpo .smallTitle {
   font-size: 20px;
 }
+
 #cuerpo #firstSteps {
   font-size: 24px;
 }
+
 #cuerpo .steps {
   text-decoration: underline;
   font-size: 20px;
 }
-
-/*# sourceMappingURL=main.css.map */

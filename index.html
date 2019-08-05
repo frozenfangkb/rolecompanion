@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="es">
     <head>
-        <title>RoleCompanion v0.1.0</title>
+        <title>RoleCompanion v0.1.0 - Inicio</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="font-awesome/scss/font-awesome.css">
@@ -9,6 +9,14 @@
         <link rel="stylesheet" href="css/main.css">
     </head>
     <body>
+      <div id="title-bar">
+      <div id="title">RoleCompanion v0.1.0</div>
+        <div id="title-bar-btns">
+          <!-- ToDo: Change buttons to divs and style them -->
+             <button id="min-btn">-</button>
+             <button id="close-btn">x</button>
+        </div>
+      </div>
         <nav class="sidebar-navigation">
             <ul>
                 <li class="active">
@@ -39,34 +47,12 @@
             <br><br>
             <div class="row" style="text-align: center; margin-right: 12%">
                 <div style="border-bottom: solid 2px; width: 100%">
-                    <span id="firstSteps">Primeros pasos</span>
+                    <span id="firstSteps">Noticias</span>
                 </div>
             </div>
             <br>
             <div class="row">
-                <div class="offset-md-2 col-sm-2 offset-md-2">
-                    <i class="fa fa-microphone"></i>  <span class="steps">Sonido</span>
-                </div>
-                <div class="col-sm-1"></div>
-                <div class="offset-md-2 col-sm-2 offset-md-2">
-                    <i class="fa fa-keyboard-o"></i>  <span class="steps">Macros</span>
-                </div>
-            </div>
-            <br>
-            <div class="row" style="margin-right: 5%">
-                <div class="col-md-4">
-                    <ol>
-                        <li>PlaceholderPlaceholderPlaceholderPlaceholder</li>
-                        <li>PlaceholderPlaceholderPlaceholderPlaceholder</li>
-                    </ol>
-                </div>
-                <div class="offset-sm-2"></div>
-                <div class="col-md-4">
-                    <ol>
-                        <li>PlaceholderPlaceholderPlaceholderPlaceholder</li>
-                        <li>PlaceholderPlaceholderPlaceholderPlaceholder</li>
-                    </ol>
-                </div>
+              <!-- ToDo: Definir qué debe aparecer en noticias (Noticias, changelog...) --> Placeholder.
             </div>
         </div>
 
@@ -76,6 +62,7 @@
         <script type="text/javascript" src="js/popper.min.js"></script>
         <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript" src="js/topBar.js"></script>
         <script>if (window.module) module = window.module;</script>
     </body>
 </html>
