@@ -24,10 +24,37 @@ body
 
 
 #title-bar-btns
-   -webkit-app-region: no-drag
-   position: fixed
-   top: 0px
-   right: 6px
+    -webkit-app-region: no-drag
+    position: absolute
+    margin: 0
+    padding: 0
+    top: 0
+    right: 0
+    width: 80px
+    height: 24px
+
+#min-btn
+  position: relative
+  right: 15%
+  height: 100%
+  width: 20px
+  text-align: center
+  &:hover
+    cursor: pointer
+    background-color: #22252E
+
+
+#close-btn
+  position: relative
+  top: 10%
+  right: 0
+  height: 24px
+  width: 20px
+  text-align: center
+  &:hover
+    cursor: pointer
+    background-color: red
+
 
 // End top bar css
 
@@ -49,3 +76,13 @@ body
   .steps
     text-decoration: underline
     font-size: 20px
+
+#help-icon
+  position: fixed
+  top: 7%
+  right: 2%
+  &:hover
+    cursor: pointer
+
+.warning
+  color: red

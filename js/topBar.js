@@ -1,21 +1,15 @@
-(function () {
+$(document).ready(function() {
 
-      var {BrowserWindow} = require('electron');
+    const {remote} = require('electron');
 
-     function init() {
-          document.getElementById("min-btn").addEventListener("click", function (e) {
-               window.minimize();
-          });
+    $('#min-btn').click(function() {
+        let activeWindow = remote.BrowserWindow.getFocusedWindow();
+        activeWindow.minimize();
+    });
 
-          document.getElementById("close-btn").addEventListener("click", function (e) {
-               window.close();
-          });
-     };
+    $('#close-btn').click(function() {
+        let activeWindow = remote.BrowserWindow.getFocusedWindow();
+        activeWindow.close();
+    });
 
-     document.onreadystatechange = function () {
-          if (document.readyState == "complete") {
-               init();
-          }
-     };
-
-})();
+});

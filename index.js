@@ -1,10 +1,11 @@
-const {app, BrowserWindow, Menu} = require('electron');
+const {app, BrowserWindow, ipcMain} = require('electron');
 //const iohook = require('iohook');
 //const keycode = require('keycode');
 //const naudiodon = require('naudiodon');
 
 // Global reference to window
 let win;
+let help = null;
 
 function createWindow () {
     win = new BrowserWindow({
@@ -24,11 +25,25 @@ function createWindow () {
 
     //win.removeMenu();
 
-    win.webContents.openDevTools();
+    //win.webContents.openDevTools();
 
 }
 
-// ToDo: Implement menu modifications
+function createHelpChild() {
+    help = new BrowserWindow({parent: win, modal: true, show: false,
+        width: 800,
+        height: 700,
+        webPreferences: {
+            nodeIntegration: true
+        },
+        frame: false});
+    help.loadFile('help.html');
+    help.on('closed', () => {
+        help = null
+    });
+}
+
+// ToDo: Implement menu modifications¿?
 
 app.on('ready', createWindow);
 
@@ -40,6 +55,13 @@ app.on('window-all-closed', () => {
 
 app.on('activate', () => {
     if (win === null) {
-        createWindow()
+        createWindow();
     }
+});
+
+ipcMain.on('moveToHelp', function(event,arg) {
+    if (help === null) {
+        createHelpChild();
+    }
+    help.show();
 });

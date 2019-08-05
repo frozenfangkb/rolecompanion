@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="es">
     <head>
-        <title>RoleCompanion v0.1.0 - Ayuda</title>
+        <title>RoleCompanion v0.1.2 - Ayuda</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="font-awesome/scss/font-awesome.css">
@@ -9,17 +9,24 @@
         <link rel="stylesheet" href="css/main.css">
     </head>
     <body>
+        <div id="title-bar">
+            <div id="title">RoleCompanion v0.1.2 - Ayuda</div>
+        </div>
         <nav class="sidebar-navigation">
             <ul>
                 <li class="active">
                     <i class="fa fa-question-circle"></i>
                     <span class="tooltip">Primeros pasos</span>
                 </li>
+                <li>
+                    <i class="fa fa-sign-out"></i>
+                    <span class="tooltip">Cerrar ayuda</span>
+                </li>
             </ul>
         </nav>
 
         <div id="cuerpo">
-            <div class="row"><div id="cabecera">Bienvenid@ a RoleCompanion <span class="smallTitle">v0.1.0</span></div></div>
+            <div class="row"><div id="cabecera">Bienvenid@ a RoleCompanion <span class="smallTitle">v0.1.2</span></div></div>
             <br><br>
             <div class="row" style="text-align: center; margin-right: 12%">
                 <div style="border-bottom: solid 2px; width: 100%">
@@ -38,29 +45,29 @@
             </div>
             <br>
             <div class="row" style="margin-right: 5%">
-                <div class="col-md-4">
+                <div class="offset-sm-1 col-md-4">
                     <ol>
-                      <!-- ToDo: Lanzar ventana con un evento para poner el tutorial de VoiceMeeter ahí -->
-                        <li>1-. Descarga, instala y configura VoiceMeeter para poder emitir el audio por el juego. Puedes seguir este tutorial =)</li>
-                        <li>2-. Una vez instalado, verifica en el menú de opciones de RoleCompanion que tienes correctamente configuradas las salidas.
-                        La primera salida deben ser tus auriculares o altavoces, selecciónalos de la lista de "Auriculares de salida". La segunda,
-                        debe ser el dispositivo de VoiceMeeter que te aparezca tipificado como Altavoces o Speakers. Ahora, haz clic en guardar ajustes.</li>
-                        <li>3-. Entra en el panel de sonidos de RoleCompanion y pulsa el botón "Añadir nuevo sonido". Sigue las instrucciones en pantalla.</li>
-                        <li>4-. ¡Hecho! Una vez configurado, el sonido se reproducirá por tus auriculares y dentro del juego al mismo tiempo cuando pulses
-                        el atajo de teclado que hayas elegido durante el proceso de configuración.</li>
+                      <!-- ToDo: Lanzar ventana con un evento para poner el tutorial de VoiceMeeter ahÃ­ -->
+                        <li>1-. Descarga, instala y configura VoiceMeeter para poder emitir el audio por el juego. Puedes seguir este tutorial =)</li><br>
+                        <li>2-. Una vez instalado, verifica en el menÃº de opciones de RoleCompanion que tienes correctamente configuradas las salidas.
+                        La primera salida deben ser tus auriculares o altavoces, selecciÃ³nalos de la lista de "Auriculares de salida". La segunda,
+                        debe ser el dispositivo de VoiceMeeter que te aparezca tipificado como Altavoces o Speakers. Ahora, haz clic en guardar ajustes.</li><br>
+                        <li>3-. Entra en el panel de sonidos de RoleCompanion y pulsa el botÃ³n "AÃ±adir nuevo sonido". Sigue las instrucciones en pantalla.</li><br>
+                        <li>4-. Â¡Hecho! Una vez configurado, el sonido se reproducirÃ¡ por tus auriculares y dentro del juego al mismo tiempo cuando pulses
+                        el atajo de teclado que hayas elegido durante el proceso de configuraciÃ³n.</li>
                     </ol>
                 </div>
-                <div class="offset-sm-2"></div>
-                <div class="col-md-4">
+
+                <div class="offset-sm-1 col-md-4">
                     <ol>
-                        <li>1-. Entra en el panel de Macros de RoleCompanion</li>
-                        <li>2-. Haz clic en añadir nueva macro.</li>
-                        <li>3-. Indica el número de pulsaciones y configura en el panel las teclas o combinaciones que debe pulsar la aplicación</li>
-                        <li>4-. Asígnale un atajo de teclado para reproducirla y pulsa en guardar macro.</li>
-                        <li>5-. Pulsa en guardar macro y ¡Hecho! mientras RoleCompanion se encuentre abierto reproducirá la macro al pulsar
-                        el atajo de teclado.</li>
+                        <li>1-. Entra en el panel de Macros de RoleCompanion</li><br>
+                        <li>2-. Haz clic en aÃ±adir nueva macro.</li><br>
+                        <li>3-. Indica el nÃºmero de pulsaciones y configura en el panel las teclas o combinaciones que debe pulsar la aplicaciÃ³n</li><br>
+                        <li>4-. AsÃ­gnale un atajo de teclado para reproducirla y pulsa en guardar macro.</li><br>
+                        <li>5-. Pulsa en guardar macro y Â¡Hecho! mientras RoleCompanion se encuentre abierto reproducirÃ¡ la macro al pulsar
+                        el atajo de teclado.</li><br>
                         <li class="warning">NOTA IMPORTANTE: En el panel de opciones puedes configurar la latencia entre pulsaciones al ejecutar la macro.
-                        Por defecto es de 250ms, pero por especificaciones de tu ordenador puede no ser óptima para ejecutarla. Si las macros no te funcionan
+                        Por defecto es de 250ms, pero por especificaciones de tu ordenador puede no ser Ã³ptima para ejecutarla. Si las macros no te funcionan
                         correctamente, prueba a incrementar este valor.</li>
                     </ol>
                 </div>
@@ -73,6 +80,7 @@
         <script type="text/javascript" src="js/popper.min.js"></script>
         <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript" src="js/sidebar.js"></script>
         <script>if (window.module) module = window.module;</script>
     </body>
 </html>
