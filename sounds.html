@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <title>RoleCompanion v0.1.2 - Inicio</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="font-awesome/scss/font-awesome.css">
+        <link rel="stylesheet" href="css/lateralMenu.css">
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+      <div id="title-bar">
+      <div id="title">RoleCompanion v0.1.2</div>
+        <div id="title-bar-btns">
+          <!-- ToDo: Change buttons to divs and style them -->
+            <span id="min-btn">&nbsp;&nbsp;&nbsp;___&nbsp;&nbsp;&nbsp;</span>
+            <span id="close-btn">&nbsp;&nbsp;&nbsp;X&nbsp;&nbsp;&nbsp;</span>
+        </div>
+      </div>
+        <nav class="sidebar-navigation">
+            <ul>
+                <li class="active">
+                    <i class="fa fa-home"></i>
+                    <span class="tooltip">Inicio</span>
+                </li>
+                <li>
+                    <i class="fa fa-microphone"></i>
+                    <span class="tooltip">Sonidos</span>
+                </li>
+                <li>
+                    <i class="fa fa-keyboard-o"></i>
+                    <span class="tooltip">Macros</span>
+                </li>
+                <li>
+                    <i class="fa fa-cog"></i>
+                    <span class="tooltip">Opciones</span>
+                </li>
+                <li>
+                    <i class="fa fa-power-off"></i>
+                    <span class="tooltip">Cerrar RoleCompanion</span>
+                </li>
+            </ul>
+        </nav>
+
+        <div id="cuerpo">
+            <div class="row">
+                <div id="cabecera">
+                    Bienvenid@ a RoleCompanion <span class="smallTitle">v0.1.2</span>
+                </div>
+            </div>
+            <br><br>
+            <div class="row" style="text-align: center; margin-right: 12%">
+                <div style="border-bottom: solid 2px; width: 100%">
+                    <span id="firstSteps">Sonidos</span>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div id=soundList"><!-- ToDo: Añadir lista de sonidos existents --></div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-12" style="text-align: center">
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Fix for module loading in electron front. -->
+        <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+        <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="js/popper.min.js"></script>
+        <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript" src="js/topBar.js"></script>
+        <script>if (window.module) module = window.module;</script>
+    </body>
+</html>
