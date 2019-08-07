@@ -66,12 +66,22 @@ ipcMain.on('moveToHelp', function(event,arg) {
     })
 });
 
+//////// Navigation ipc events
+
 ipcMain.on('moveToSounds', function(event,arg) {
     win.loadFile('sounds.html');
 });
 
 ipcMain.on('moveToHome', function(event,arg) {
     win.loadFile('index.html');
+});
+
+ipcMain.on('moveToSettings', function(event,arg) {
+    win.loadFile('settings.html');
+});
+
+ipcMain.on('moveToMacros', function(event,arg) {
+    win.loadFile('macros.html');
 });
 
 ipcMain.on('childClosed', function(event,arg) {

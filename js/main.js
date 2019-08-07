@@ -29,4 +29,25 @@ $(document).ready(function () {
 
     });
 
+    $('#settings').click(function() {
+
+        if(!window.location.href.includes('settings.html')){
+            ipcRenderer.send('moveToSettings');
+        }
+
+    });
+
+    $('#macros').click(function() {
+
+        if(!window.location.href.includes('macros.html')){
+            ipcRenderer.send('moveToMacros');
+        }
+
+    });
+
+    $('#quit').click(function() {
+        let activeWindow = remote.BrowserWindow.getFocusedWindow();
+        activeWindow.close();
+    });
+
 });
