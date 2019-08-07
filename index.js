@@ -1,11 +1,8 @@
 const {app, BrowserWindow, ipcMain} = require('electron');
-//const iohook = require('iohook');
-//const keycode = require('keycode');
-//const naudiodon = require('naudiodon');
 
 // Global reference to window
 let win;
-let help = null;
+let child = null;
 
 function createWindow () {
     win = new BrowserWindow({
@@ -29,17 +26,17 @@ function createWindow () {
 
 }
 
-function createHelpChild() {
-    help = new BrowserWindow({parent: win, modal: true, show: false,
+function createChild(file) {
+    child = new BrowserWindow({parent: win, modal: true, show: false,
         width: 800,
         height: 700,
         webPreferences: {
             nodeIntegration: true
         },
         frame: false});
-    help.loadFile('help.html');
-    help.on('closed', () => {
-        help = null
+    child.loadFile(file);
+    child.on('closed', () => {
+        child = null
     });
 }
 
@@ -60,8 +57,23 @@ app.on('activate', () => {
 });
 
 ipcMain.on('moveToHelp', function(event,arg) {
-    if (help === null) {
-        createHelpChild();
+    if (child === null) {
+        createChild('help.html');
     }
-    help.show();
+    child.show();
+    child.on('show', () => {
+        win.hide();
+    })
+});
+
+ipcMain.on('moveToSounds', function(event,arg) {
+    win.loadFile('sounds.html');
+});
+
+ipcMain.on('moveToHome', function(event,arg) {
+    win.loadFile('index.html');
+});
+
+ipcMain.on('childClosed', function(event,arg) {
+    win.show();
 });
