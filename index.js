@@ -1,4 +1,7 @@
 const {app, BrowserWindow, ipcMain} = require('electron');
+//const iohook = require('iohook');
+//const keycode = require('keycode');
+const naudiodon = require('naudiodon');
 
 // Global reference to window
 let win;
@@ -22,7 +25,7 @@ function createWindow () {
 
     //win.removeMenu();
 
-    //win.webContents.openDevTools();
+    win.webContents.openDevTools();
 
 }
 
@@ -56,6 +59,12 @@ app.on('activate', () => {
     }
 });
 
+//////// Navigation ipc events
+
+ipcMain.on('moveToSounds', function(event,arg) {
+    win.loadFile('sounds.html');
+});
+
 ipcMain.on('moveToHelp', function(event,arg) {
     if (child === null) {
         createChild('help.html');
@@ -64,12 +73,6 @@ ipcMain.on('moveToHelp', function(event,arg) {
     child.on('show', () => {
         win.hide();
     })
-});
-
-//////// Navigation ipc events
-
-ipcMain.on('moveToSounds', function(event,arg) {
-    win.loadFile('sounds.html');
 });
 
 ipcMain.on('moveToHome', function(event,arg) {
@@ -87,3 +90,25 @@ ipcMain.on('moveToMacros', function(event,arg) {
 ipcMain.on('childClosed', function(event,arg) {
     win.show();
 });
+
+//////// Navigation ipc events END
+
+//////// Audio devices loading events
+
+ipcMain.on('getAudioDevices', () => {
+
+    let devices = naudiodon.getDevices();
+
+    devices.forEach((device) => {
+
+        if(device.maxInputChannels >= 1) {
+            delete devices.device;
+        }
+
+    });
+
+    return devices;
+
+});
+
+//////// Audio devices loading events END
