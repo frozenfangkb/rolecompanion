@@ -1,12 +1,29 @@
-const {ipcRenderer} = require('electron');
-
 $(document).ready(() => {
 
-    ipcRenderer.send('getAudioDevices');
-    ipcRenderer.on('receiveAudioDevices', (event, arg) => {
+    let devices = null
+    let voicemeeterDevices = null
 
-        console.log(event);
-        console.log(arg);
+    ipcRenderer.send('getAudioDevices');
+    ipcRenderer.on('receiveAudioDevices', (event, args) => {
+
+        devices = args
+        args.forEach((device) => {
+
+            $('#mainAudio').append('<option value="'+device.id+'">'+device.name+'</option>')
+
+        })
+
+    });
+
+    ipcRenderer.send('getAudioVMDevices');
+    ipcRenderer.on('receiveAudioVMDevices', (event, args) => {
+
+        voicemeeterDevices = args
+        args.forEach((device) => {
+
+            $('#secondaryAudio').append('<option value="'+device.id+'">'+device.name+'</option>')
+
+        })
 
     });
 
