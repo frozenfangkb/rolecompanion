@@ -12,7 +12,9 @@ let child = null;
 // Global reference to config variables
 let defaultConfig = {
   "mainAudioDeviceID": "Not defined",
-  "secondaryAudioDeviceID": "Not defined"
+  "mainAudioDeviceName": "Not defined",
+  "secondaryAudioDeviceID": "Not defined",
+  "secondaryAudioDeviceName": "Not defined"
 };
 let config = null;
 const configFilePath = './config.json';
@@ -23,6 +25,7 @@ fs.access(configFilePath, fs.F_OK, (err) => {
     fs.writeFile(configFilePath, JSON.stringify(defaultConfig), () => {
       console.log("New config file created successfully")
     }); // ToDo: Add action to log file
+    config = defaultConfig;
   } else {
     let rawData = fs.readFileSync(configFilePath, () => {
       console.log("Config file readed successfully");
@@ -30,6 +33,20 @@ fs.access(configFilePath, fs.F_OK, (err) => {
     config = JSON.parse(rawData);
   }
 });
+
+ipcMain.on('loadConfig', (event,args) => {
+
+  event.reply('getConfig', config);
+
+});
+
+function updateConfig() {
+
+  fs.writeFile(configFilePath, JSON.stringify(config), () => {
+    console.log("Config file updated successfully")
+  }); // ToDo: Add action to log file
+
+}
 
 /// ///// Config file loading
 
@@ -144,6 +161,28 @@ ipcMain.on('getAudioVMDevices', (event, args) => {
     }
   });
   event.reply('receiveAudioVMDevices', finalDevices)
+});
+
+ipcMain.on('setAudioDevices', (event, args) => {
+
+  try{
+
+    let audioObject = args;
+
+    config.mainAudioDeviceID = audioObject.mainAudioDeviceID;
+    config.mainAudioDeviceName = audioObject.mainAudioDeviceName;
+    config.secondaryAudioDeviceID = audioObject.secondaryAudioDeviceID;
+    config.secondaryAudioDeviceName = audioObject.secondaryAudioDeviceName;
+
+    updateConfig();
+
+    event.reply('configUpdate', 'ok');
+
+  } catch(e) {
+    console.log(e); // ToDo: log error on file
+    event.reply('configUpdate', 'error');
+  }
+
 });
 
 /// ///// Audio devices loading events END
