@@ -1,12 +1,12 @@
 $(document).ready(() => {
 
-    let devices = null
-    let voicemeeterDevices = null
+    let devices = null;
+    let voicemeeterDevices = null;
 
     ipcRenderer.send('getAudioDevices');
     ipcRenderer.on('receiveAudioDevices', (event, args) => {
 
-        devices = args
+        devices = args;
         args.forEach((device) => {
 
             $('#mainAudio').append('<option value="'+device.id+'">'+device.name+'</option>')
@@ -18,12 +18,16 @@ $(document).ready(() => {
     ipcRenderer.send('getAudioVMDevices');
     ipcRenderer.on('receiveAudioVMDevices', (event, args) => {
 
-        voicemeeterDevices = args
+        voicemeeterDevices = args;
         args.forEach((device) => {
 
             $('#secondaryAudio').append('<option value="'+device.id+'">'+device.name+'</option>')
 
         })
+
+    });
+
+    $('#saveSettings').click(() => {
 
     });
 

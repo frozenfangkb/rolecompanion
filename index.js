@@ -128,7 +128,7 @@ ipcMain.on('getAudioDevices', (event, args) => {
   const devices = naudiodon.getDevices();
   let finalDevices = [];
   devices.forEach((device) => {
-    if (device.maxInputChannels === 0 || device.name.includes("VoiceMeeter")) {
+    if (device.maxInputChannels === 0 && device.name.substring(device.name.length-1) === ')') {
       finalDevices.push(device)
     }
   });
@@ -139,7 +139,7 @@ ipcMain.on('getAudioVMDevices', (event, args) => {
   const devices = naudiodon.getDevices();
   let finalDevices = [];
   devices.forEach((device) => {
-    if (device.name.includes("VoiceMeeter")) {
+    if (device.name.includes("VoiceMeeter") && device.name.substring(device.name.length-1) === ')') {
       finalDevices.push(device)
     }
   });
