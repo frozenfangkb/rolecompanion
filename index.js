@@ -3,6 +3,7 @@ const { app, BrowserWindow, ipcMain } = require('electron');
 // const keycode = require('keycode');
 const naudiodon = require('naudiodon');
 const fs = require('fs');
+const path = require('path');
 
 // ToDo: Add logger module and configure it across the file
 // Global reference to window and child windows
@@ -186,3 +187,32 @@ ipcMain.on('setAudioDevices', (event, args) => {
 });
 
 /// ///// Audio devices loading events END
+
+// Auxiliar function for capitalize the first letter of a string
+// Got it from https://dzone.com/articles/how-to-capitalize-the-first-letter-of-a-string-in
+function jsUcfirst(string)
+{
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+//////// Sounds events
+
+ipcMain.on('getSounds',(event,args) => {
+
+  let sounds = [];
+  let directoryPath = path.join(__dirname, 'sounds');
+
+  fs.readdir(directoryPath, function (err, files) {
+
+    if (err) {
+      return console.log('Unable to scan directory: ' + err); // ToDo: log error on file
+    } else {
+      files.forEach((file) => { sounds.push(jsUcfirst(file.slice(0,-4))) });
+      event.reply('receiveSoundsList', sounds);
+    }
+
+  });
+
+});
+
+//////// Sounds events END
