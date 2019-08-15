@@ -1,6 +1,6 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
-// const iohook = require('iohook');
-// const keycode = require('keycode');
+const iohook = require('iohook');
+const keycode = require('keycode');
 const naudiodon = require('naudiodon');
 const fs = require('fs');
 const path = require('path');
@@ -70,7 +70,7 @@ function createWindow () {
 
   // win.removeMenu();
 
-  //win.webContents.openDevTools()
+  win.webContents.openDevTools()
 }
 
 function createChild (file) {

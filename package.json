@@ -27,7 +27,21 @@
     "sass": "^1.22.9"
   },
   "devDependencies": {
-    "electron": "^6.0.1",
-    "electron-rebuild": "^1.8.5"
+    "electron": "^6.0.2",
+    "electron-prebuilt": "^1.4.13",
+    "electron-rebuild": "^1.8.5",
+    "node-abi": "^2.11.0"
+  },
+  "iohook": {
+    "targets": [
+      "node-64",
+      "electron-73"
+    ],
+    "platforms": [
+      "win32"
+    ],
+    "arches": [
+      "x64"
+    ]
   }
 }

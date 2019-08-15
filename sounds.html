@@ -80,7 +80,7 @@
                           <span aria-hidden="true">&times;</span>
                       </button>
                   </div>
-                  <div class="modal-body">
+                  <div class="modal-body" style="text-align: center">
                       <label for="selectSound">Sonido:</label><br>
                       <select class="custom-select" id="selectSound">
                           <option selected>Selecciona un sonido</option>
@@ -88,10 +88,21 @@
                       <br>
                       <br>
                       <div class="input-group mb-2">
-                          <input type="text" class="form-control" id="keyShortcut" placeholder="Sin atajo de teclado" disabled>
+                          <input type="text" class="form-control" id="keyShortcut" placeholder="Sin atajo de teclado" readonly>
                           <div class="input-group-append">
                               <button class="btn btn-outline-secondary" id="shortcutButton" type="button">Grabar atajo de teclado</button>
                           </div>
+                      </div><br>
+                      <div class="btn-group btn-group-toggle">
+                          <label id="ctrlOption" class="btn btn-secondary">
+                              <input type="radio" name="options" autocomplete="off"> Control
+                          </label>
+                          <label id="shiftOption"  class="btn btn-secondary">
+                              <input type="radio" name="options" autocomplete="off"> Shift
+                          </label>
+                          <label id="altOption" class="btn btn-secondary">
+                              <input type="radio" name="options" autocomplete="off"> Alt
+                          </label>
                       </div>
                   </div>
                   <div class="modal-footer">
