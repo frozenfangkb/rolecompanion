@@ -1,6 +1,31 @@
 $(document).ready(() => {
 
     let capturingKey = false;
+    let keyHolder = {};
+    let keyToSave = {};
+
+    $('#saveSound').click(() => {
+
+        if(capturingKey || (Object.entries(keyHolder).length === 0 && keyHolder.constructor === Object)) {
+            alertify.notify("Apaga la captura de atajo de teclado o captura un atajo de teclado por favor", "warning","5");
+        } else {
+            if(keyHolder.key.toUpperCase() === $('#keyShortcut').val()) { // Making sure that the captured key is correct
+
+                keyToSave = {
+                    shiftKey: keyHolder.shiftKey,
+                    altKey: keyHolder.altKey,
+                    ctrlKey: keyHolder.ctrlKey,
+                    metaKey: false,
+                    keycode: 0,
+                    rawcode: keyHolder
+                };
+
+            } else {
+                alertify.notify("Error capturando el atajo de teclado", "error", "5");
+            }
+        }
+
+    });
 
     $('#addSound').click(() => {
 
@@ -52,7 +77,7 @@ $(document).ready(() => {
                         $('#shiftOption').addClass('btn-success');
                     }
                     $('#keyShortcut').val(e.key.toUpperCase());
-
+                    keyHolder = e;
                     // ToDo: send event to backend and start keyboard hooking and play sound
 
                 }
