@@ -4,6 +4,23 @@ $(document).ready(() => {
     let keyHolder = {};
     let keyToSave = {};
 
+    ////// Filling the sound list if possible
+    /*ipcRenderer.send('loadSoundList', (event,args) => {
+        if(args != 500){
+
+        }
+    });*/
+
+    ipcRenderer.on('savingNewSound', (event,args) => {
+        if(args == 200) {
+            alertify.notify("Nuevo sonido capturado correctamente", "success", "5", () => {
+                location.reload();
+            });
+        } else {
+            alertify.notify("Error guardando el sonido en la configuración", "error", "5");
+        }
+    });
+
     $('#saveSound').click(() => {
 
         if(capturingKey || (Object.entries(keyHolder).length === 0 && keyHolder.constructor === Object)) {
@@ -17,8 +34,12 @@ $(document).ready(() => {
                     ctrlKey: keyHolder.ctrlKey,
                     metaKey: false,
                     keycode: 0,
-                    rawcode: keyHolder
+                    rawcode: keyHolder.keyCode
                 };
+
+                let soundToSave = $('#selectSound option:selected').val();
+
+                ipcRenderer.send('saveNewSound', [soundToSave,keyToSave]);
 
             } else {
                 alertify.notify("Error capturando el atajo de teclado", "error", "5");
@@ -34,9 +55,14 @@ $(document).ready(() => {
         ipcRenderer.send('getSounds');
         ipcRenderer.on('receiveSoundsList', (event,args) => {
 
-            args.forEach((file) => {
-                $('#selectSound').append('<option value="'+file+'">'+file+'</option>')
-            });
+            if(args != 500) {
+                args.forEach((file) => {
+                    $('#selectSound').append('<option value="'+file+'">'+file+'</option>')
+                });
+            } else {
+                alertify.notify("Ha ocurrido un error cargando los sonidos existentes", "error", "5");
+            }
+
 
         });
 
@@ -95,4 +121,5 @@ $(document).ready(() => {
         }
 
     });
+
 });

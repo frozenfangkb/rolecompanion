@@ -12,10 +12,11 @@ let child = null;
 
 // Global reference to config variables
 let defaultConfig = {
-  "mainAudioDeviceID": "Not defined",
-  "mainAudioDeviceName": "Not defined",
-  "secondaryAudioDeviceID": "Not defined",
-  "secondaryAudioDeviceName": "Not defined"
+  mainAudioDeviceID: "Not defined",
+  mainAudioDeviceName: "Not defined",
+  secondaryAudioDeviceID: "Not defined",
+  secondaryAudioDeviceName: "Not defined",
+  sounds: []
 };
 let config = null;
 const configFilePath = './config.json';
@@ -205,6 +206,7 @@ ipcMain.on('getSounds',(event,args) => {
   fs.readdir(directoryPath, function (err, files) {
 
     if (err) {
+      event.reply('receiveSoundsList', 500);
       return console.log('Unable to scan directory: ' + err); // ToDo: log error on file
     } else {
       files.forEach((file) => { sounds.push(jsUcfirst(file.slice(0,-4))) });
@@ -212,6 +214,43 @@ ipcMain.on('getSounds',(event,args) => {
     }
 
   });
+
+});
+
+ipcMain.on('saveNewSound', (event,args) => {
+
+  let directoryPath = path.join(__dirname, 'sounds');
+
+  fs.readdir(directoryPath, function (err, files) {
+
+    if (err) {
+      event.reply('savingNewSound', 500);
+      return console.log('Unable to scan directory: ' + err); // ToDo: log error on file
+    } else {
+      files.forEach((file) => {
+        if(file.toUpperCase().slice(0,-4) === args[0].toUpperCase()) {
+
+          config.sounds.push({
+            sound: file,
+            shortcut: args[1]
+          });
+
+          try {
+            updateConfig();
+            event.reply('savingNewSound', 200);
+          } catch(e) {
+            event.reply('savingNewSound', 500); // ToDo: log error on file
+          }
+
+        }
+      });
+    }
+
+  });
+
+
+
+
 
 });
 
