@@ -5,26 +5,33 @@ $(document).ready(() => {
     let keyToSave = {};
 
     ////// Filling the sound list if possible
-    /*ipcRenderer.send('loadSoundList', (event,args) => {
-        if(args != 500){
+    ipcRenderer.send('loadSoundList');
 
-        }
-    });*/
+    ipcRenderer.on('setSoundList', (event,args) => {
+      if(args != 204){
+
+        console.log(args);
+
+      } else {
+        $('#soundList').empty();
+        $('#soundList').append("Todavía no has añadido ningún sonido.");
+      }
+    });
 
     ipcRenderer.on('savingNewSound', (event,args) => {
         if(args == 200) {
-            alertify.notify("Nuevo sonido capturado correctamente", "success", "5", () => {
+            alertify.notify("Nuevo sonido capturado correctamente", "success", "3", () => {
                 location.reload();
             });
         } else {
-            alertify.notify("Error guardando el sonido en la configuración", "error", "5");
+            alertify.notify("Error guardando el sonido en la configuración", "error", "3");
         }
     });
 
     $('#saveSound').click(() => {
 
         if(capturingKey || (Object.entries(keyHolder).length === 0 && keyHolder.constructor === Object)) {
-            alertify.notify("Apaga la captura de atajo de teclado o captura un atajo de teclado por favor", "warning","5");
+            alertify.notify("Apaga la captura de atajo de teclado o captura un atajo de teclado por favor", "warning","3");
         } else {
             if(keyHolder.key.toUpperCase() === $('#keyShortcut').val()) { // Making sure that the captured key is correct
 
@@ -39,10 +46,11 @@ $(document).ready(() => {
 
                 let soundToSave = $('#selectSound option:selected').val();
 
+                $('.modal-footer').toggle(500);
                 ipcRenderer.send('saveNewSound', [soundToSave,keyToSave]);
 
             } else {
-                alertify.notify("Error capturando el atajo de teclado", "error", "5");
+                alertify.notify("Error capturando el atajo de teclado", "error", "3");
             }
         }
 
@@ -60,7 +68,7 @@ $(document).ready(() => {
                     $('#selectSound').append('<option value="'+file+'">'+file+'</option>')
                 });
             } else {
-                alertify.notify("Ha ocurrido un error cargando los sonidos existentes", "error", "5");
+                alertify.notify("Ha ocurrido un error cargando los sonidos existentes", "error", "3");
             }
 
 

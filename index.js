@@ -249,7 +249,21 @@ ipcMain.on('saveNewSound', (event,args) => {
   });
 
 
+  ipcMain.on('loadSoundList', (event,args) => {
 
+    let soundList = [];
+    console.log("hi")
+    console.log(config.sounds.length)
+    if(config.sounds.length < 1) {
+      event.reply('setSoundList', 204);
+    } else {
+      config.sounds.forEach((sound) => {
+        soundList.push(sound);
+      });
+      event.reply('setSoundList', soundList);
+    }
+
+  });
 
 
 });

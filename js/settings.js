@@ -59,9 +59,9 @@ $(document).ready(() => {
         ipcRenderer.on('configUpdate', (event,args) => {
 
             if(args == 'ok') {
-                alertify.notify("Configuración actualizada correctamente", 'success', "5");
+                alertify.notify("Configuración actualizada correctamente", 'success', "3");
             } else {
-                alertify.notify("Error actualizando la configuración", 'error', "5");
+                alertify.notify("Error actualizando la configuración", 'error', "3");
             }
 
         });
