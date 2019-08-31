@@ -264,4 +264,21 @@ ipcMain.on('loadSoundList', async (event,args) => {
 
 });
 
+ipcMain.on('deleteSound', async (event,args) => {
+
+  try {
+    for(let i = 0; i < config.sounds.length; i++) {
+      if(config.sounds[i].sound == args) {
+        config.sounds.splice(i,1);
+      }
+    }
+    updateConfig();
+    event.reply('soundDeleted', 200);
+  } catch(err) {
+    console.log(err); // ToDo: Log error in log file
+    event.reply('soundDeleted', 500);
+  }
+
+});
+
 //////// Sounds events END

@@ -33,7 +33,7 @@ $(document).ready(() => {
                 "<div class='col-sm-2 offset-sm-2'>Atajo</div>"
             ).
             append(
-                "<div class='col-sm-2 offset-sm-2'>Acciones</div></div></div>"
+                "<div class='col-sm-2 offset-sm-2'>Borrar</div></div></div>"
             );
 
             $('#soundList').append("<div id='listForSounds' class='row' style='width: 100%;text-align: center; margin-top: 10px; padding-top: 10px;background-color: #313443'></div>");
@@ -52,7 +52,7 @@ $(document).ready(() => {
 
               $('#listForSounds').append("<div class='soundItemName col-sm-2 offset-sm-1'>"+sound.sound.slice(0,-4)+"</div>").
               append("<div class='soundItemShortcut offset-sm-2 col-sm-2'>"+shortcutString+"</div>").
-              append("<div class='soundItemActions offset-sm-2 col-sm-2'><i class='material-icons' onclick='editItem(this)' id='"+sound.sound+"'>edit</i>  <i class='material-icons' onclick='deleteItem(this)' id='"+sound.sound+"'>delete_forever</i></div>");
+              append("<div class='soundItemActions offset-sm-2 col-sm-2'><i class='material-icons' onclick='deleteItem(this)' id='"+sound.sound+"'>delete_forever</i></div>");
 
             })
 
@@ -167,10 +167,23 @@ $(document).ready(() => {
 
 // Auxiliar function to deleting sounds item from list and config
 function deleteItem(item) {
-    console.log(item.id)
-}
 
-// Auxiliar function to editing sounds
-function editItem(item) {
-    console.log(item.id)
+  alertify.confirm("¿Seguro que quieres borrar el sonido?","Borrar el elemento lo quitará de tu configuración, esto es irreversible.",
+  () => { // Confirm delete
+    ipcRenderer.on('soundDeleted', (event, args) => {
+
+      if(args==200) {
+        alertify.notify("Se ha borrado el sonido correctamente.","success", "3",() => {window.location.reload()});
+      } else {
+        alertify.notify("No se pudo borrar el sonido.", "error", "3");
+      }
+
+    });
+
+    ipcRenderer.send('deleteSound', item.id);
+  },
+  () => { // Cancel
+    alertify.notify("No se ha borrado el sonido.","warning","3");
+  })
+
 }

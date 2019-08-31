@@ -1,6 +1,6 @@
 {
   "name": "rolecompanion",
-  "version": "0.1.6",
+  "version": "0.2.0",
   "description": "Audio and Keyboard companion for RolePlay in GTA V",
   "main": "index.js",
   "scripts": {

@@ -21,7 +21,7 @@ $(document).ready(function () {
             ipcRenderer.send('moveToHelp');
         });
     }
-    
+
     $('#sounds').click(function() {
 
         if(!window.location.href.includes('sounds.html')){
@@ -46,13 +46,13 @@ $(document).ready(function () {
 
     });
 
-    $('#macros').click(function() {
-
-        if(!window.location.href.includes('macros.html')){
-            ipcRenderer.send('moveToMacros');
-        }
-
-    });
+    // $('#macros').click(function() {
+    //
+    //     if(!window.location.href.includes('macros.html')){
+    //         ipcRenderer.send('moveToMacros');
+    //     }
+    //
+    // });
 
     $('#quit').click(function() {
         let activeWindow = remote.BrowserWindow.getFocusedWindow();
