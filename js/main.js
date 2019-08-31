@@ -18,7 +18,6 @@ $(document).ready(function () {
 
     if($('#help-icon').length > 0) {
         $('#help-icon').click(function() {
-            console.log("recibido 1")
             ipcRenderer.send('moveToHelp');
         });
     }

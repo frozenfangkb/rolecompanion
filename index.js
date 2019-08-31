@@ -248,23 +248,19 @@ ipcMain.on('saveNewSound', (event,args) => {
 
   });
 
+});
 
-  ipcMain.on('loadSoundList', (event,args) => {
+ipcMain.on('loadSoundList', async (event,args) => {
 
-    let soundList = [];
-    console.log("hi")
-    console.log(config.sounds.length)
-    if(config.sounds.length < 1) {
-      event.reply('setSoundList', 204);
-    } else {
-      config.sounds.forEach((sound) => {
-        soundList.push(sound);
-      });
-      event.reply('setSoundList', soundList);
-    }
-
-  });
-
+  let soundList = [];
+  if(config.sounds.length <= 0) {
+    event.reply('setSoundList', 204);
+  } else {
+    await config.sounds.forEach((sound) => {
+      soundList.push(sound);
+    });
+    event.reply('setSoundList', soundList);
+  }
 
 });
 

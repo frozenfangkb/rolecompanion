@@ -4,20 +4,6 @@ $(document).ready(() => {
     let keyHolder = {};
     let keyToSave = {};
 
-    ////// Filling the sound list if possible
-    ipcRenderer.send('loadSoundList');
-
-    ipcRenderer.on('setSoundList', (event,args) => {
-      if(args != 204){
-
-        console.log(args);
-
-      } else {
-        $('#soundList').empty();
-        $('#soundList').append("Todavía no has añadido ningún sonido.");
-      }
-    });
-
     ipcRenderer.on('savingNewSound', (event,args) => {
         if(args == 200) {
             alertify.notify("Nuevo sonido capturado correctamente", "success", "3", () => {
@@ -25,6 +11,53 @@ $(document).ready(() => {
             });
         } else {
             alertify.notify("Error guardando el sonido en la configuración", "error", "3");
+        }
+    });
+
+    ////// Filling the sound list if possible
+    ipcRenderer.send('loadSoundList');
+
+    ipcRenderer.on('setSoundList', async (event,args) => {
+        if(args != 204){
+
+            $('#soundList').empty().
+            append(
+                "<div id='titleSounds' class='row' style='border-bottom: solid 2px;width: 100%'></div>"
+            );
+
+            $('#titleSounds').
+            append(
+                "<div class='col-sm-2 offset-sm-1'>Sonido</div>"
+            ).
+            append(
+                "<div class='col-sm-2 offset-sm-2'>Atajo</div>"
+            ).
+            append(
+                "<div class='col-sm-2 offset-sm-2'>Acciones</div></div></div>"
+            );
+
+            $('#soundList').append("<div id='listForSounds' class='row' style='width: 100%;text-align: center; margin-top: 10px; padding-top: 10px;background-color: #313443'></div>");
+
+            let shortcutString = "";
+
+            await args.forEach((sound) => {
+
+              shortcutString = "";
+
+              if(sound.shortcut.ctrlKey) shortcutString+="Ctrl+";
+              if(sound.shortcut.shiftKey) shortcutString+="Shift+";
+              if(sound.shortcut.altKey) shortcutString+="Alt+";
+
+              shortcutString+=String.fromCharCode(sound.shortcut.rawcode)
+
+              $('#listForSounds').append("<div class='soundItemName col-sm-2 offset-sm-1'>"+sound.sound.slice(0,-4)+"</div>").
+              append("<div class='soundItemShortcut offset-sm-2 col-sm-2'>"+shortcutString+"</div>").
+              append("<div class='soundItemActions offset-sm-2 col-sm-2'><i class='material-icons' onclick='editItem(this)' id='"+sound.sound+"'>edit</i>  <i class='material-icons' onclick='deleteItem(this)' id='"+sound.sound+"'>delete_forever</i></div>");
+
+            })
+
+        } else {
+            $('#soundList').empty().append("Todavía no has añadido ningún sonido.");
         }
     });
 
@@ -131,3 +164,13 @@ $(document).ready(() => {
     });
 
 });
+
+// Auxiliar function to deleting sounds item from list and config
+function deleteItem(item) {
+    console.log(item.id)
+}
+
+// Auxiliar function to editing sounds
+function editItem(item) {
+    console.log(item.id)
+}

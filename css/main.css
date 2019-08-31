@@ -96,4 +96,20 @@ body {
   color: red;
 }
 
+.soundItemName {
+  color: #F5F6F8;
+}
+
+.soundItemShortcut {
+  color: #F5F6F8;
+}
+
+.soundItemActions {
+  color: #F5F6F8;
+}
+
+.material-icons :hover {
+  cursor: pointer !important;
+}
+
 /*# sourceMappingURL=main.css.map */
