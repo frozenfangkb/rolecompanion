@@ -1,9 +1,10 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const iohook = require('iohook');
-const keycode = require('keycode');
 const naudiodon = require('naudiodon');
 const fs = require('fs');
 const path = require('path');
+const { getAudioDurationInSeconds } = require('get-audio-duration');
+let mustPlay = true;
 
 // ToDo: Add logger module and configure it across the file
 // Global reference to window and child windows
@@ -14,8 +15,12 @@ let child = null;
 let defaultConfig = {
   mainAudioDeviceID: "Not defined",
   mainAudioDeviceName: "Not defined",
+  mainAudioChannelCount: "Not defined",
+  mainAudioSampleRate: "Not defined",
   secondaryAudioDeviceID: "Not defined",
   secondaryAudioDeviceName: "Not defined",
+  secondaryAudioChannelCount: "Not defined",
+  secondaryAudioSampleRate: "Not defined",
   sounds: []
 };
 let config = null;
@@ -173,8 +178,12 @@ ipcMain.on('setAudioDevices', (event, args) => {
 
     config.mainAudioDeviceID = audioObject.mainAudioDeviceID;
     config.mainAudioDeviceName = audioObject.mainAudioDeviceName;
+    config.mainAudioChannelCount = audioObject.mainAudioChannelCount;
+    config.mainAudioSampleRate = audioObject.mainAudioSampleRate;
     config.secondaryAudioDeviceID = audioObject.secondaryAudioDeviceID;
     config.secondaryAudioDeviceName = audioObject.secondaryAudioDeviceName;
+    config.secondaryAudioChannelCount = audioObject.secondaryAudioChannelCount;
+    config.secondaryAudioSampleRate = audioObject.secondaryAudioSampleRate;
 
     updateConfig();
 
@@ -230,17 +239,21 @@ ipcMain.on('saveNewSound', (event,args) => {
       files.forEach((file) => {
         if(file.toUpperCase().slice(0,-4) === args[0].toUpperCase()) {
 
-          config.sounds.push({
-            sound: file,
-            shortcut: args[1]
-          });
+          getAudioDurationInSeconds('./sounds/'+file).then((duration) => {
+            config.sounds.push({
+              sound: file,
+              duration: parseInt(duration*1000),
+              shortcut: args[1]
+            });
 
-          try {
-            updateConfig();
-            event.reply('savingNewSound', 200);
-          } catch(e) {
-            event.reply('savingNewSound', 500); // ToDo: log error on file
-          }
+            try {
+              updateConfig();
+              event.reply('savingNewSound', 200);
+            } catch(e) {
+              console.log(e);
+              event.reply('savingNewSound', 500); // ToDo: log error on file
+            }
+          });
 
         }
       });
@@ -282,3 +295,95 @@ ipcMain.on('deleteSound', async (event,args) => {
 });
 
 //////// Sounds events END
+
+//////// Initial checking events
+
+ipcMain.on('checkConfig', (event,args) => {
+
+  // If the audio devices are not configured
+  if(config.mainAudioDeviceID === "Not defined" || config.mainAudioDeviceName === "Not defined" || config.secondaryAudioDeviceID === "Not defined" || config.secondaryAudioDeviceName === "Not defined") {
+    event.reply('configChecked', 400); // Reply bad request
+  } else if(config.sounds.length <= 0) { // If there are no sounds configured yet
+    event.reply('configChecked', 406); // Reply not acceptable
+  } else { // Everything configured ok
+    event.reply('configChecked', 200);
+  }
+
+});
+
+//////// Initial checking events END
+
+//////// Hooks declarations
+
+  ipcMain.on('initHooks', (event,args) => {
+
+    try {
+      // Unregistering shortcuts previously registered.
+      iohook.unregisterAllShortcuts();
+      iohook.useRawcode(true);
+
+      let shortcut = [];
+      for(let i = 0; i < config.sounds.length; i++) {
+        shortcut = [];
+        if(config.sounds[i].shortcut.shiftKey) {
+          shortcut.push(160);
+        } else if(config.sounds[i].shortcut.ctrlKey) {
+          shortcut.push(162);
+        } else if(config.sounds[i].shortcut.altKey) {
+          shortcut.push(164);
+        }
+        shortcut.push(config.sounds[i].shortcut.rawcode);
+
+        iohook.registerShortcut(shortcut, (keys) => {
+          if(mustPlay) {
+            try {
+              // Create an instance of AudioIO with outOptions, which will return a WritableStream
+              let ao = new naudiodon.AudioIO({
+                outOptions: {
+                  channelCount: parseInt(config.secondaryAudioChannelCount),
+                  sampleFormat: naudiodon.SampleFormat16Bit,
+                  sampleRate: parseInt(config.secondaryAudioSampleRate),
+                  deviceId: parseInt(config.secondaryAudioDeviceID)
+                }
+              });
+
+              // Create a stream to pipe into the AudioOutput
+              // Note that this does not strip the WAV header so a click will be heard at the beginning
+              let rs = fs.createReadStream('./sounds/'+config.sounds[i].sound);
+
+              // Start piping data and start streaming
+              rs.pipe(ao);
+              ao.start();
+              mustPlay = false;
+              setTimeout(() => {
+                mustPlay = true;
+              }, config.sounds[i].duration);
+            } catch(err) {
+              console.log(err); // ToDo: register error on log file
+            }
+          }
+
+        });
+      }
+      iohook.start(false);
+      event.reply('hooksStarted', 200);
+    } catch(err) {
+      console.log(err); // ToDo: register error on log file
+      event.reply('hooksStarted', 500);
+    }
+
+  });
+
+  ipcMain.on('stopHooks', (event,args) => {
+
+    try {
+      iohook.stop();
+      event.reply('stoppedHooks',200);
+    } catch(err) {
+     console.log(err); // ToDo: register error on log file
+     event.reply('stoppedHooks',500);
+    }
+
+  });
+
+//////// Hookd declarations END

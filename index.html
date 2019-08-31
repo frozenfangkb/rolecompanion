@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="es">
     <head>
-        <title>RoleCompanion v0.2.0 - Inicio</title>
+        <title>RoleCompanion v0.3.0 Alpha - Inicio</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="font-awesome/scss/font-awesome.css">
@@ -9,10 +9,11 @@
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/alertify.min.css">
         <link rel="stylesheet" href="css/themes/bootstrap.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     </head>
     <body>
       <div id="title-bar">
-      <div id="title">RoleCompanion v0.2.0</div>
+      <div id="title">RoleCompanion v0.3.0 Alpha</div>
         <div id="title-bar-btns">
           <!-- ToDo: Try to correctly modify divs to topBar shape. -->
              <span id="min-btn">&nbsp;&nbsp;&nbsp;___&nbsp;&nbsp;&nbsp;</span>
@@ -47,7 +48,7 @@
         <div id="cuerpo">
             <div class="row">
                 <div id="cabecera">
-                    Bienvenid@ a RoleCompanion <span class="smallTitle">v0.2.0</span>
+                    Bienvenid@ a RoleCompanion <span class="smallTitle">v0.3.0 Alpha</span>
                 </div>
                 <div><i class="fa fa-question-circle fa-3x" id="help-icon"></i><span class="tooltip">Ayuda</span></div>
             </div>
@@ -58,7 +59,17 @@
                 </div>
             </div>
             <br>
-            <div class="row">
+            <div class="row" style="padding-top: 15%; height: 300px;width: 90%;background-color: #313443">
+              <div class="offset-md-1 col-sm-4">
+                <button class="btn btn-success" id="startHooks" disabled>Iniciar RoleCompanion</button>
+              </div>
+              <div class="offset-md-2 col-sm-4">
+                <button class="btn btn-danger" id="stopHooks" disabled>Detener RoleCompanion</button>
+              </div>
+              <br><br>
+              <div class="offset-md-1 col-sm-10" id="mainInfo" style="color: #F5F6F8; text-align: center">
+                Comprobando configuración...
+              </div>
               <!-- ToDo: Añadir botón para iniciar y parar la escucha de los eventos del teclado. -->
             </div>
         </div>
@@ -71,6 +82,7 @@
         <script type="text/javascript" src="js/alertify.min.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/topBar.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
         <script>if (window.module) module = window.module;</script>
     </body>
 </html>
