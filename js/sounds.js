@@ -128,7 +128,7 @@ $(document).ready(() => {
                 "<div class='col-sm-2 offset-sm-2'>Borrar</div></div></div>"
             );
 
-            $('#soundList').append("<div id='listForSounds' class='row'></div>");
+            $('#soundList').append("<div id='listForSounds' style='height: 350px; overflow:auto' class='row'></div>");
 
             let shortcutString = "";
 

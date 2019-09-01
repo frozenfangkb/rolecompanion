@@ -1,5 +1,9 @@
 const {ipcRenderer, remote} = require('electron');
 
+$(window).resize(function(){
+    window.resizeTo(800,600);
+});
+
 $(document).ready(function () {
     $(document).on("keydown", function(e) {
         e = e || window.event;

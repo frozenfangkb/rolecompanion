@@ -1,3 +1,14 @@
-# rolecompanion
+# RoleCompanion App
 
-Work in progress, will update this later.
+RoleCompanion es una app pensada para dar más realismo a los roles que se realizan en GTA V.
+
+La forma de conseguirlo, es tener la posibilidad de reproducir sonidos dentro del juego usando esta app
+y la aplicación VoiceMeeter para poder usar su dispositivo virtual de audio.
+
+Puedes descargar VoiceMeeter en [https://www.vb-audio.com/Voicemeeter/](https://www.vb-audio.com/Voicemeeter/)
+
+## Instalación y Configuración
+
+Tras haber instalado VoiceMeeter, lo abrimos y procedemos a configurarlo como se indica en la siguiente imagen:
+
+![alt text](./images/voicetuto.png "VoiceMeeter settings")

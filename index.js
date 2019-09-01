@@ -340,7 +340,7 @@ ipcMain.on('checkConfig', (event,args) => {
               // Create an instance of AudioIO with outOptions, which will return a WritableStream
               let ao = new naudiodon.AudioIO({
                 outOptions: {
-                  channelCount: parseInt(config.secondaryAudioChannelCount),
+                  channelCount: 2,
                   sampleFormat: naudiodon.SampleFormat16Bit,
                   sampleRate: parseInt(config.secondaryAudioSampleRate),
                   deviceId: parseInt(config.secondaryAudioDeviceID)

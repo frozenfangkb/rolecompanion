@@ -22,7 +22,7 @@ $(document).ready(() => {
       break;
       default:
       $('#mainInfo').empty();
-      $('#mainInfo').append('Houston, tenemos un problema. Algo ha ido raruno, por favor, reporta el bug en http://wolfblackmoon.zapto.org:8000');
+      $('#mainInfo').append('Houston, tenemos un problema. Algo ha ido raruno, por favor, reporta el bug en discord a Frozen#0077');
       break;
 
     }
@@ -35,6 +35,9 @@ $(document).ready(() => {
 
     $('#startHooks').attr('disabled', true);
     $('#stopHooks').attr('disabled', false);
+    $('#home').addClass('disabled');
+    $('#sounds').addClass('disabled');
+    $('#settings').addClass('disabled');
 
     ipcRenderer.send('initHooks');
 
@@ -44,6 +47,9 @@ $(document).ready(() => {
 
     $('#startHooks').attr('disabled', false);
     $('#stopHooks').attr('disabled', true);
+    $('#home').removeClass('disabled');
+    $('#sounds').removeClass('disabled');
+    $('#settings').removeClass('disabled');
 
     ipcRenderer.send('stopHooks');
 
