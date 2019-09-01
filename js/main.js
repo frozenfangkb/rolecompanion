@@ -1,4 +1,4 @@
-const {ipcRenderer, remote} = require('electron');
+const {ipcRenderer, remote, shell } = require('electron');
 
 $(window).resize(function(){
     window.resizeTo(800,600);
@@ -22,7 +22,7 @@ $(document).ready(function () {
 
     if($('#help-icon').length > 0) {
         $('#help-icon').click(function() {
-            ipcRenderer.send('moveToHelp');
+            shell.openExternal('https://github.com/frozenfangkb/rolecompanion/blob/master/README.MD');
         });
     }
 

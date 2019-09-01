@@ -11,6 +11,8 @@ let mustPlay = true;
 let win;
 let child = null;
 
+if (require('electron-squirrel-startup')) return;
+
 // Global reference to config variables
 let defaultConfig = {
   mainAudioDeviceID: "Not defined",
@@ -62,6 +64,7 @@ function createWindow () {
   win = new BrowserWindow({
     width: 800,
     height: 600,
+    icon: 'image/RCLogo.png',
     webPreferences: {
       nodeIntegration: true
     },
@@ -76,7 +79,7 @@ function createWindow () {
 
   // win.removeMenu();
 
-  win.webContents.openDevTools()
+  // win.webContents.openDevTools()
 }
 
 function createChild (file) {
@@ -86,6 +89,7 @@ function createChild (file) {
     show: false,
     width: 800,
     height: 700,
+    icon: 'image/RCLogo.png',
     webPreferences: {
       nodeIntegration: true
     },
