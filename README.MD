@@ -22,7 +22,7 @@ Ahora instalamos RoleCompanion descargando la última versión desde [aquí](htt
 Primero, configuramos los dispositivos de audio. En la sección de auriculares de salida, seleccionamos nuestros auriculares.
 En la sección de salida de voicemeeter, seleccionamos el dispositivo que aparezca calificado como speakers o altavoces.
 
-![RoleCompanion tutorial 1](https://github.com/frozenfangkb/rolecompanion/blob/master/image/RCtuto1.png "RoleCompanion tutorial 1")
+![RoleCompanion tutorial 1](https://github.com/frozenfangkb/rolecompanion/blob/master/image/RCtuto1.PNG "RoleCompanion tutorial 1")
 
 Después, vamos a la sección de sonidos y añadimos un nuevo sonido haciendo click en el botón. Para añadir el sonido:
 
