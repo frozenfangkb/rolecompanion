@@ -55,7 +55,7 @@ a formato WAV de 16 bits. De lo contrario, pueden sonar como ruido blanco bastan
 
 ### ¡Oye! Esto se me cierra al intentar reproducir un sonido
 
-Algunos dispositivos de audio pueden no ser compatibles con la aplicación, se ha intentado estandarizar lo más posible el código para que esto no suceda, pero no puedo hacer nada si esto ocurre. Prueba con otro dispositivo de audio. También asegúrate de que has seleccionado el dispositivo de VoiceMeeter correctamente. También asegúrate de que ninguna aplicación está usando el dispositivo virtual de
+Algunos dispositivos de audio pueden no ser compatibles con la aplicación, se ha intentado estandarizar lo más posible el código para que esto no suceda, pero no puedo hacer nada si esto ocurre. Prueba con otro dispositivo de audio. También asegúrate de que has seleccionado el dispositivo de VoiceMeeter correctamente y asegúrate de que ninguna aplicación está usando el dispositivo virtual de
 VoiceMeeter que se puede seleccionar como altavoces, ya que la aplicación tomará control exclusivo del dispositivo virtal que nosotros intentamos usar para reproducir el sonido.
 
 ### No escucho los sonidos de la app, pero el resto de la gente si :(
@@ -68,12 +68,16 @@ Si tienes algún problema que no aparezca contemplado en el FAQ, puedes reportar
 
 ## Errores conocidos
 
-..* A veces la aplicación puede cerrarse de forma inesperada si el dispositivo de audio no es compatible por razones de canales de audio o SampleRate.
-..* Algunos sonidos a veces no se reproducen por completo.
-..* Si creas un atajo de teclado por ejemplo con Ctrl+Shift+F y otro con Ctrl+F, RoleCompanion usará el de Ctrl+F. Siempre.
+⋅⋅* A veces la aplicación puede cerrarse de forma inesperada si el dispositivo de audio no es compatible por razones de canales de audio o SampleRate.
+⋅⋅* Algunos sonidos a veces no se reproducen por completo.
+⋅⋅* Si creas un atajo de teclado por ejemplo con Ctrl+Shift+F y otro con Ctrl+F, RoleCompanion usará el de Ctrl+F. Siempre.
 
 ## Consejos de uso
 
-..* Intenta usar teclas que no tengan uso en GTA para los atajos de teclado
-..* NO uses WASD para ningún atajo de teclado.
-..* Los sonidos incluidos por defecto están normalizados en lo que a volumen se refiere para no resultar molestos. Aun así, si resultan molestos, puedes bajar el volumen del dispositivo virtual de VoiceMeeter.
+⋅⋅* Intenta usar teclas que no tengan uso en GTA para los atajos de teclado
+⋅⋅* NO uses WASD para ningún atajo de teclado.
+⋅⋅* Los sonidos incluidos por defecto están normalizados en lo que a volumen se refiere para no resultar molestos. Aun así, si resultan molestos, puedes bajar el volumen del dispositivo virtual de VoiceMeeter.
+
+# IMPORTANTE
+
+Este software se distribuye sin ningún tipo de garantía ni ánimo de lucro por parte de su creador. Al descargarla aceptas que el creador no está obligado a ofrecer un mantenimiento de la misma si no es su voluntad ni a ofrecer ningún tipo de garantía de funcionamiento de la misma. No se aceptarán quejas o reclamaciones de funcionamiento del software. El desarrollador de la aplicación no asume ninguna responsabilidad por su mal uso con otro fin distinto al intencionado en su programación.
