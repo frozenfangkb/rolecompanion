@@ -243,7 +243,7 @@ ipcMain.on('saveNewSound', (event,args) => {
       files.forEach((file) => {
         if(file.toUpperCase().slice(0,-4) === args[0].toUpperCase()) {
 
-          getAudioDurationInSeconds('./sounds/'+file).then((duration) => {
+          getAudioDurationInSeconds(path.join(__dirname,'/sounds/',file)).then((duration) => {
             config.sounds.push({
               sound: file,
               duration: parseInt(duration*1000),
@@ -353,7 +353,7 @@ ipcMain.on('checkConfig', (event,args) => {
 
               // Create a stream to pipe into the AudioOutput
               // Note that this does not strip the WAV header so a click will be heard at the beginning
-              let rs = fs.createReadStream('./sounds/'+config.sounds[i].sound);
+              let rs = fs.createReadStream(path.join(__dirname,'/sounds/',config.sounds[i].sound));
 
               // Start piping data and start streaming
               rs.pipe(ao);
