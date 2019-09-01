@@ -68,15 +68,15 @@ Si tienes algún problema que no aparezca contemplado en el FAQ, puedes reportar
 
 ## Errores conocidos
 
-⋅⋅* A veces la aplicación puede cerrarse de forma inesperada si el dispositivo de audio no es compatible por razones de canales de audio o SampleRate.
-⋅⋅* Algunos sonidos a veces no se reproducen por completo.
-⋅⋅* Si creas un atajo de teclado por ejemplo con Ctrl+Shift+F y otro con Ctrl+F, RoleCompanion usará el de Ctrl+F. Siempre.
+* A veces la aplicación puede cerrarse de forma inesperada si el dispositivo de audio no es compatible por razones de canales de audio o SampleRate.
+* Algunos sonidos a veces no se reproducen por completo.
+* Si creas un atajo de teclado por ejemplo con Ctrl+Shift+F y otro con Ctrl+F, RoleCompanion usará el de Ctrl+F. Siempre.
 
 ## Consejos de uso
 
-⋅⋅* Intenta usar teclas que no tengan uso en GTA para los atajos de teclado
-⋅⋅* NO uses WASD para ningún atajo de teclado.
-⋅⋅* Los sonidos incluidos por defecto están normalizados en lo que a volumen se refiere para no resultar molestos. Aun así, si resultan molestos, puedes bajar el volumen del dispositivo virtual de VoiceMeeter.
+* Intenta usar teclas que no tengan uso en GTA para los atajos de teclado
+* NO uses WASD para ningún atajo de teclado.
+* Los sonidos incluidos por defecto están normalizados en lo que a volumen se refiere para no resultar molestos. Aun así, si resultan molestos, puedes bajar el volumen del dispositivo virtual de VoiceMeeter.
 
 # IMPORTANTE
 
