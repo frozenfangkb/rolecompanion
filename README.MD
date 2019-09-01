@@ -11,4 +11,4 @@ Puedes descargar VoiceMeeter en [https://www.vb-audio.com/Voicemeeter/](https://
 
 Tras haber instalado VoiceMeeter, lo abrimos y procedemos a configurarlo como se indica en la siguiente imagen:
 
-![alt text](./images/voicetuto.png "VoiceMeeter settings")
+![VoiceMeeter settings](https://github.com/frozenfangkb/rolecompanion/blob/master/image/voicetuto.png "VoiceMeeter settings")
