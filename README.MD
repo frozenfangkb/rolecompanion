@@ -17,7 +17,7 @@ Tras haber instalado VoiceMeeter, lo abrimos y procedemos a configurarlo como se
 2. Desmarcamos que use el canal A, para no escucharnos a nosotros mismos.
 3. Seleccionamos aquí nuestros auriculares, los mismos por los que escuchemos el juego. MUY IMPORTANTE: selecciona la opción precedida por "MME", de lo contrario no escucharás el juego.
 
-Ahora instalamos RoleCompanion descargando la última versión desde [aquí](https://www.vb-audio.com/Voicemeeter/)
+Ahora instalamos RoleCompanion descargando la última versión desde [aquí](https://github.com/frozenfangkb/rolecompanion/releases)
 
 Primero, configuramos los dispositivos de audio. En la sección de auriculares de salida, seleccionamos nuestros auriculares.
 En la sección de salida de voicemeeter, seleccionamos el dispositivo que aparezca calificado como speakers o altavoces.
