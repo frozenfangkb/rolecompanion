@@ -49,7 +49,7 @@ P.D2: Recuerda también NO cerrar ni VoiceMeeter ni RoleCompanion para que todo 
 
 ### ¿Puedo añadir sonidos propios?
 
-Sí, claro. Sólo tienes que navegar hasta la carpeta de RoleCompanion (C:\\Users\\<tu usuario>\\AppData\\Local\\rolecompanion\\app-0.3.0\\resources\\app\\sounds) y pegar ahí tus sonidos personalizados.
+Sí, claro. Sólo tienes que navegar hasta la carpeta de RoleCompanion (C:\\Users\\tu usuario\\AppData\\Local\\rolecompanion\\app-0.3.0\\resources\\app\\sounds) y pegar ahí tus sonidos personalizados.
 Si quieres asegurarte de que funcionen correctamente, te aconsejo modificarlos con Audacity (para reducir el volumen y que no sean demasiado estridentes) y exportarlos con esa aplicación
 a formato WAV de 16 bits. De lo contrario, pueden sonar como ruido blanco bastante molesto, no sonar o provocar un cierre inesperado de la aplicación.
 
