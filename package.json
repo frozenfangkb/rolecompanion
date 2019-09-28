@@ -19,10 +19,10 @@
   "dependencies": {
     "bower": "^1.8.8",
     "electron-squirrel-startup": "^1.0.0",
-    "get-audio-duration": "^1.0.0",
     "iohook": "^0.6.1",
     "keycode": "^2.2.0",
     "mic": "^2.1.2",
+    "music-metadata": "^4.8.0",
     "naudiodon": "^2.1.0",
     "node-gyp": "^5.0.3",
     "popper.js": "^1.15.0",

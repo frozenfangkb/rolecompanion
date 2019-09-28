@@ -3,7 +3,7 @@ const iohook = require('iohook');
 const naudiodon = require('naudiodon');
 const fs = require('fs');
 const path = require('path');
-const { getAudioDurationInSeconds } = require('get-audio-duration');
+const mm = require('music-metadata');
 let mustPlay = true;
 
 // ToDo: Add logger module and configure it across the file
@@ -243,10 +243,10 @@ ipcMain.on('saveNewSound', (event,args) => {
       files.forEach((file) => {
         if(file.toUpperCase().slice(0,-4) === args[0].toUpperCase()) {
 
-          getAudioDurationInSeconds(path.join(__dirname,'/sounds/',file)).then((duration) => {
+          mm.parseFile(path.join(__dirname,'/sounds/',file)).then(metadata => {
             config.sounds.push({
               sound: file,
-              duration: parseInt(duration*1000),
+              duration: Math.round(metadata.format.duration * 1000),
               shortcut: args[1]
             });
 
