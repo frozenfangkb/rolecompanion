@@ -22,7 +22,7 @@
     "iohook": "^0.6.1",
     "keycode": "^2.2.0",
     "mic": "^2.1.2",
-    "minimist": ">=1.2.3",
+    "minimist": ">=1.2.6",
     "music-metadata": "^4.8.0",
     "naudiodon": "^2.1.0",
     "node-gyp": "^5.0.3",
