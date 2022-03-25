@@ -30,7 +30,7 @@
     "sass": "^1.22.9"
   },
   "devDependencies": {
-    "electron": "^7.2.4",
+    "electron": "^13.6.6",
     "electron-prebuilt": "^1.4.13",
     "electron-rebuild": "^1.8.5",
     "node-abi": "^2.11.0",
